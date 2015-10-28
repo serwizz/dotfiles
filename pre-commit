@@ -8,6 +8,8 @@ SP_FILES=()
 PX_FILES=()
 LR_FILES=()
 FILL_FILES=()
+CONSTS=()
+BRACES=()
 
 ERROR=0;
 
@@ -56,6 +58,16 @@ do
 	if [ -n $FILL_FILE ]; then
 		FILL_FILES+=($FILL_FILE)
 	fi
+	
+	CONST=$(grep -E "setClassName *\( *\"|setAction *\( *\"|set[a-zA-Z]*Extra *\(\s*\"" $FILE -l)
+	if [ -n $CONST ]; then
+		CONSTS+=($CONST)
+	fi
+
+	BRACE=$(grep -E " +\/>" $FILE -l)
+	if [ -n $BRACE ]; then
+		BRACES+=($BRACE)
+	fi
 
 done 
 
@@ -65,6 +77,8 @@ echo_error TAB_FILES[@] "TAB"
 echo_error LR_FILES[@] "margin(padding, align, gravity) LEFT and RIGHT"
 echo_error COLOR_FILES[@] "hardcoded COLORS"
 echo_error FILL_FILES[@] "use fill_parent"
+echo_error CONSTS[@] "out constants"
+echo_error BRACES[@] "trailing closing braces"
 	
 
 if [ $ERROR -eq 0 ]; then
