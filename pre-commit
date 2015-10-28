@@ -1,0 +1,76 @@
+#!/bin/sh
+#
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E "*.xml|*.java")
+
+TAB_FILES=()
+SP_FILES=()
+PX_FILES=()
+LR_FILES=()
+FILL_FILES=()
+
+ERROR=0;
+
+function echo_error {
+	DATA=()
+	DATA=("${!1}")
+	TYPE=$2
+
+	if [ ! ${#DATA[@]} -eq 0 ]; then
+		echo "You have ${#DATA[@]} files with ${TYPE}:"
+		printf '%s\n' "${DATA[@]}"
+		ERROR=1
+	fi
+}
+
+
+for FILE in $FILES
+do
+
+	TAB_FILE=$(grep "$(printf '\t')" $FILE -l)
+	if [ -n $TAB_FILE ]; then
+		TAB_FILES+=($TAB_FILE)
+	fi
+
+	PX_FILE=$(grep -E "[0-9]+px" $FILE -l)
+	if [ -n $PX_FILE ]; then
+		PX_FILES+=($PX_FILE)
+	fi
+
+	SP_FILE=$(grep -E "[0-9]+sp" $FILE -l)
+	if [ -n $SP_FILE ]; then
+		SP_FILES+=($SP_FILE)
+	fi
+
+	LR_FILE=$(grep -E "(marginRight|marginLeft|paddingLeft|paddingRight|alignParentRight|alignParentLeft|gravity=\"left|gravity=\"right)" $FILE -l)
+	if [ -n $LR_FILE ]; then
+		LR_FILES+=($LR_FILE)
+	fi
+
+	COLOR_FILE=$(grep -E "android:textColor=\"#|android:background=\"#|android:color=\"#" $FILE -l)
+	if [ -n $COLOR_FILE ]; then
+		COLOR_FILES+=($COLOR_FILE)
+	fi
+	
+	FILL_FILE=$(grep -E "=\"fill_parent" $FILE -l)
+	if [ -n $FILL_FILE ]; then
+		FILL_FILES+=($FILL_FILE)
+	fi
+
+done 
+
+echo_error PX_FILES[@] "PX"
+echo_error PS_FILES[@] "PS"
+echo_error TAB_FILES[@] "TAB"
+echo_error LR_FILES[@] "margin(padding, align, gravity) LEFT and RIGHT"
+echo_error COLOR_FILES[@] "hardcoded COLORS"
+echo_error FILL_FILES[@] "use fill_parent"
+	
+
+if [ $ERROR -eq 0 ]; then
+	exit 0;
+else 
+	echo "Aborting the commit. Run with --no-verify to ignore."
+    exit 1
+fi
+
