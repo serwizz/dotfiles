@@ -1,0 +1,53 @@
+#run in console out of X
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+times_in_seconds true
+
+#behaviour
+update_interval 2.0
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+#font
+use_xft yes
+xftfont hermit:size=9
+
+# JSON for i3bar
+# Stuff after 'TEXT' will be formatted on screen
+
+TEXT
+
+[
+    { "full_text" : "DLS","color":"\#DEDEDE","separator":false,"separator_block_width":6},
+    { "full_text" : "${upspeed eno1}","color":"\#6389A8","separator":false,"separator_block_width":6},
+    { "full_text" : "ULS","color":"\#DEDEDE","separator":false,"separator_block_width":6},
+    { "full_text" : "${downspeed eno1}","color":"\#6389A8","separator":false,"separator_block_width":6},
+    { "full_text" : "MUSIC","color":"\#DEDEDE","separator":false,"separator_block_width":6},
+    { "full_text" : "${exec deadbeef --nowplaying "%a - %t" 2>/dev/null}","color":"\#6389A8","separator":false,"separator_block_width":6},
+    { "full_text" : "RAM","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
+    { "full_text" : "${mem}","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    { "full_text" : "CPU","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
+    { "full_text" : "${cpu}%","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    { "full_text" : "AVG","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
+    { "full_text" : "${loadavg 1}","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    { "full_text" : "VOL","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
+    ${if_match "${exec hostname}" == "serwiz-work"}
+    { "full_text" : "${exec amixer -c 0 get PCM | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    ${else}
+    { "full_text" : "${exec amixer -c 0 get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    ${endif}
+    { "full_text" : "DATE","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
+    { "full_text" : "${time %A %e.%m.%Y, %H:%M} " ,"color":"\#6389A8","separator":false,"separator_block_width":6}
+],

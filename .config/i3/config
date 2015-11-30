@@ -1,0 +1,332 @@
+# i3 config file (v)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+#~ workspace 1 output DVI-I-1
+#~ workspace 2 output DVI-I-1
+#~ workspace 3 output DVI-I-1
+#~ workspace 4 output DVI-I-1
+#~ workspace 5 output VGA-0
+#~ workspace 6 output VGA-0
+#~ workspace 7 output VGA-0
+#~ workspace 8 output VGA-0
+#~ workspace 9 output VGA-0
+
+# font for window titles. ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -*-terminus-medium-*-normal-*-12-*-*-*-*-*-*-ru
+#font -*-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-*
+#font pango:Terminus 8
+#font xft: tamsynmod 8
+font pango:Droid Sans 8
+
+default_orientation auto
+new_window pixel 3
+new_float pixel 3
+hide_edge_borders vertical
+
+bindsym Mod4+t border normal
+bindsym Mod4+y border pixel 3
+
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+# start a terminal
+bindsym Mod4+Return exec sakura
+
+# kill focused window
+bindsym Mod4+Shift+q kill
+
+# change focus
+bindsym Mod4+j focus left
+bindsym Mod4+k focus down
+bindsym Mod4+l focus up
+bindsym Mod4+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+j move left
+bindsym Mod4+Shift+k move down
+bindsym Mod4+Shift+l move up
+bindsym Mod4+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+h split h
+
+# split in vertical orientation
+bindsym Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout default
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# focus the child container
+bindsym Mod4+c focus child
+
+set $WS1 1:   MUSIC
+set $WS2 2:   CHAT
+set $WS3 3:   WORK
+set $WS4 4:   TERM
+set $WS5 5:   FILES
+set $WS6 6:   FOX
+set $WS7 7:   MISC
+set $WS8 8:   OFFICE
+set $WS9 9:   VBOX
+
+# switch to workspace
+bindsym Mod4+1 workspace $ws1
+bindsym Mod4+2 workspace $ws2
+bindsym Mod4+3 workspace $ws3
+bindsym Mod4+4 workspace $ws4
+bindsym Mod4+5 workspace $ws5
+bindsym Mod4+6 workspace $ws6
+bindsym Mod4+7 workspace $ws7
+bindsym Mod4+8 workspace $ws8
+bindsym Mod4+9 workspace $ws9
+
+bindsym Mod1+Control+Right workspace next
+bindsym Mod1+Control+Left workspace prev
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move workspace $ws1
+bindsym Mod4+Shift+2 move workspace $ws2
+bindsym Mod4+Shift+3 move workspace $ws3
+bindsym Mod4+Shift+4 move workspace $ws4
+bindsym Mod4+Shift+5 move workspace $ws5
+bindsym Mod4+Shift+6 move workspace $ws6
+bindsym Mod4+Shift+7 move workspace $ws7
+bindsym Mod4+Shift+8 move workspace $ws8
+bindsym Mod4+Shift+9 move workspace $ws9
+
+# reload the configuration file
+bindsym Mod4+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+#bindsym Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+#bindsym Mod4+Shift+e exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # They resize the border in the direction you pressed, e.g.
+        # when pressing left, the window is resized so that it has
+        # more space on its left
+
+        bindsym j               resize shrink left 10 px or 10 ppt
+        bindsym Shift+j         resize grow   left 10 px or 10 ppt
+
+        bindsym k               resize shrink down 10 px or 10 ppt
+        bindsym Shift+k         resize grow   down 10 px or 10 ppt
+
+        bindsym l               resize shrink up 10 px or 10 ppt
+        bindsym Shift+l         resize grow   up 10 px or 10 ppt
+
+        bindsym semicolon       resize shrink right 10 px or 10 ppt
+        bindsym Shift+semicolon resize grow   right 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink left 10 px or 10 ppt
+        bindsym Shift+Left  resize grow   left 10 px or 10 ppt
+
+        bindsym Down        resize shrink down 10 px or 10 ppt
+        bindsym Shift+Down  resize grow   down 10 px or 10 ppt
+
+        bindsym Up          resize shrink up 10 px or 10 ppt
+        bindsym Shift+Up    resize grow   up 10 px or 10 ppt
+
+        bindsym Right       resize shrink right 10 px or 10 ppt
+        bindsym Shift+Right resize grow   right 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod4+r mode "resize"
+
+# exit mode
+mode "(E)xit, (R)eboot, (P)oweroff" {
+        bindsym r exec systemctl reboot
+        bindsym e exit
+        bindsym p exec systemctl poweroff
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym Mod4+Shift+e mode "(E)xit, (R)eboot, (P)oweroff"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+#	status_command    	i3status
+    strip_workspace_numbers yes
+    status_command $HOME/.scripts/conky-i3bar
+    position          	top
+    mode              	dock
+    workspace_buttons	yes
+    #tray_output			primary
+
+#	font -*-terminus-medium-*-normal-*-12-*-*-*-*-*-iso10646-*
+    font pango:Droid Sans Mono 8
+
+    colors {
+       	background $grab
+        statusline $graf
+       	separator $grab
+
+        focused_workspace  $actbd $actb $actf
+       	active_workspace   $grabd $grab $graf
+        inactive_workspace $ligbd $ligb $ligf
+       	urgent_workspace   $invbd $invb $invf
+	}
+}
+
+#restore layout
+#exec --no-startup-id /home/serwiz/.config/i3/restore.sh
+
+#exec any application
+#exec --no-startup-id dropbox
+exec --no-startup-id xset r rate 250 40
+exec --no-startup-id nitrogen --restore
+#exec --no-startup-id wicd-gtk --tray
+#exec --no-startup-id pidgin
+exec --no-startup-id pcmanfm
+#exec --no-startup-id sakura -x ranger
+exec --no-startup-id sakura
+exec --no-startup-id dunst
+exec --no-startup-id pulseaudio --start
+#exec --no-startup-id skype
+#exec --no-startup-id chromium
+exec --no-startup-id deadbeef
+exec --no-startup-id xautolock -time 10 -locker '$HOME/.i3lock.sh'
+#exec --no-startup-id keepassx
+#exec --no-startup-id firefox
+exec --no-startup-id  xrdb '$HOME/.Xresources'
+exec --no-startup-id telegram
+exec --no-startup-id yandex-disk start
+
+
+#assign apps to workspaces
+assign [class="chromium"] $ws3
+assign [class="jetbrains-phpstorm"] $ws3
+assign [class="jetbrains-studio"] $ws3
+assign [class="Skype"] $ws1
+assign [class="Pidgin" window_role="log_viewer"] $ws2
+assign [class="Pidgin" window_role="conversation"] $ws2
+assign [class="Pidgin" window_role="buddy_list"] $ws1
+#assign [class="Pidgin"] $ws1
+assign [class="Sonata"] $ws1
+assign [class="Deadbeef"] $ws1
+assign [class="Clementine"] $ws1
+assign [class="Gimp"] $ws7
+assign [class="Pcmanfm"] $ws5
+assign [class="Sakura"] $ws4
+assign [class="Clementine"] $ws1
+assign [class="Firefox"] $ws6
+assign [class="Geany"] $ws5
+assign [class="libreoffice"] $ws8
+assign [class="libreoffice-startcenter"] $ws8
+assign [class="Vivaldi-snapshot"] $ws6
+assign [class="Keepassx"] $ws2
+assign [class="Telegram"] $ws2
+
+
+for_window [class="libreoffice"] move container to workspace $ws8
+for_window [class="libreoffice-startcenter"] move container to workspace $ws8
+for_window [class="Pidgin" window_role="log_viewer"] move container to workspace $ws2
+for_window [class="Pidgin" window_role="conversation"] move container to workspace $ws2
+for_window [class="Telegram"] move container to workspace $ws2
+for_window [class="Skype" window_role="ConversationsWindow"] move container to workspace $ws2
+for_window [class="Skype" title="Поиск текста"] move container to workspace $ws2
+for_window [class="Skype" title="Информация"] move container to workspace $ws2
+for_window [class="Skype" title="Передачи файлов"] move container to workspace $ws2
+for_window [class="Skype" title="Информация"] floating enable
+
+# Color-styles
+    # Active style - colored back and dark font
+    set $actb #6389A8
+    set $actbd #282828
+    set $actf #ffffff
+
+    # Inverted active style - dark back and colored font
+    set $invb #83A598
+    set $invbd #282828
+    set $invf #ffffff
+
+    # Grayscaled active style - dark back and white font
+    set $grab #282828
+    set $grabd #282828
+    set $graf #ffffff
+
+    # Inactive style - darker back and gray font
+    set $inab #282828
+    set $inabd #282828
+    set $inaf #ffffff
+
+    # Inactive light style - dark back and gray font
+    set $ligb #282828
+    set $ligbd #282828
+    set $ligf $ffffff
+
+client.focused          $actb     $actb     $actf
+client.unfocused        $inab     $inab     $inaf
+client.focused_inactive $inab     $inab     $inaf
+client.urgent           $invb     $invb     $invf
+
+# start dmenu (a program launcher)
+bindsym Mod4+d exec dmenu_run -nb '#2D2D2D' -nf '#6389A8' -sb '#186266' -sf '#2D2D2D' -fn "Droid Sans Mono-8:normal"
+
+
+#bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -c 0 set PCM 3%- unmute"
+#bindsym Mod1+Control+a exec --no-startup-id "amixer -c 0 set PCM 3%- unmute"
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
+#bindsym Mod1+Control+q exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
+
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -3%"
+bindsym Mod1+Control+a exec --no-startup-id "pactl set-sink-volume 0 -3%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +3%"
+bindsym Mod1+Control+q exec --no-startup-id "pactl set-sink-volume 0 +3%"
+
+bindsym Mod1+Control+l exec --no-startup-id $HOME/.i3lock.sh
+
+bindsym Mod1+Control+z exec --no-startup-id deadbeef --prev
+bindsym Mod1+Control+x exec --no-startup-id deadbeef --stop
+bindsym Mod1+Control+c exec --no-startup-id deadbeef --play-pause
+bindsym Mod1+Control+v exec --no-startup-id deadbeef --next
+
+bindsym XF86AudioPrev exec --no-startup-id deadbeef --prev
+bindsym XF86AudioStop exec --no-startup-id deadbeef --stop
+bindsym XF86AudioPlay exec --no-startup-id deadbeef --play-pause
+bindsym XF86AudioNext exec --no-startup-id deadbeef --next
