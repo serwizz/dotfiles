@@ -314,10 +314,10 @@ bindsym Mod4+d exec dmenu_run -nb '#2D2D2D' -nf '#6389A8' -sb '#186266' -sf '#2D
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
 #bindsym Mod1+Control+q exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
 
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -3%"
-bindsym Mod1+Control+a exec --no-startup-id "pactl set-sink-volume 0 -3%"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +3%"
-bindsym Mod1+Control+q exec --no-startup-id "pactl set-sink-volume 0 +3%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo -3%"
+bindsym Mod1+Control+a exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo -3%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo +3%"
+bindsym Mod1+Control+q exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo +3%"
 
 bindsym Mod1+Control+l exec --no-startup-id $HOME/.i3lock.sh
 

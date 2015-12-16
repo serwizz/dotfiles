@@ -44,7 +44,7 @@ TEXT
     { "full_text" : "${loadavg 1}","color":"\#6389A8","separator":false,"separator_block_width":6},\
     { "full_text" : "VOL","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
     ${if_match "${exec hostname}" == "serwiz-work"}
-    { "full_text" : "${exec amixer -c 0 get PCM | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%","color":"\#6389A8","separator":false,"separator_block_width":6},\
+    { "full_text" : "${exec pactl list sinks | grep "front-right:" | awk '{print $5}'}","color":"\#6389A8","separator":false,"separator_block_width":6},\
     ${else}
     { "full_text" : "${exec amixer -c 0 get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%","color":"\#6389A8","separator":false,"separator_block_width":6},\
     ${endif}
