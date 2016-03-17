@@ -9,6 +9,8 @@
 # layout, use the i3-config-wizard
 #
 
+set $mod Mod4
+
 #~ workspace 1 output DVI-I-1
 #~ workspace 2 output DVI-I-1
 #~ workspace 3 output DVI-I-1
@@ -32,67 +34,74 @@ new_window pixel 3
 new_float pixel 3
 hide_edge_borders vertical
 
-bindsym Mod4+t border normal
-bindsym Mod4+y border pixel 3
+bindsym $mod+t border normal
+bindsym $mod+y border pixel 3
 
-# use Mouse+Mod4 to drag floating windows to their wanted position
-floating_modifier Mod4
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # start a terminal
-bindsym Mod4+Return exec sakura
+bindsym $mod+Return exec sakura
 
 # kill focused window
-bindsym Mod4+Shift+q kill
+bindsym $mod+Shift+q kill
 
 # change focus
-bindsym Mod4+j focus left
-bindsym Mod4+k focus down
-bindsym Mod4+l focus up
-bindsym Mod4+semicolon focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym Mod4+Shift+j move left
-bindsym Mod4+Shift+k move down
-bindsym Mod4+Shift+l move up
-bindsym Mod4+Shift+semicolon move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+h split h
+bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, default)
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout default
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
 
 # toggle tiling / floating
-bindsym Mod4+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod4+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod4+a focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
-bindsym Mod4+c focus child
+bindsym $mod+c focus child
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Control+Down move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+Control+Up scratchpad show
+
 
 set $WS1 1:   MUSIC
 set $WS2 2:   CHAT
@@ -104,37 +113,37 @@ set $WS7 7:   MISC
 set $WS8 8:   OFFICE
 set $WS9 9:   VBOX
 
-# switch to workspace
-bindsym Mod4+1 workspace $ws1
-bindsym Mod4+2 workspace $ws2
-bindsym Mod4+3 workspace $ws3
-bindsym Mod4+4 workspace $ws4
-bindsym Mod4+5 workspace $ws5
-bindsym Mod4+6 workspace $ws6
-bindsym Mod4+7 workspace $ws7
-bindsym Mod4+8 workspace $ws8
-bindsym Mod4+9 workspace $ws9
+# switch to workspacRe
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 bindsym Mod1+Control+Right workspace next
 bindsym Mod1+Control+Left workspace prev
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move workspace $ws1
-bindsym Mod4+Shift+2 move workspace $ws2
-bindsym Mod4+Shift+3 move workspace $ws3
-bindsym Mod4+Shift+4 move workspace $ws4
-bindsym Mod4+Shift+5 move workspace $ws5
-bindsym Mod4+Shift+6 move workspace $ws6
-bindsym Mod4+Shift+7 move workspace $ws7
-bindsym Mod4+Shift+8 move workspace $ws8
-bindsym Mod4+Shift+9 move workspace $ws9
+bindsym $mod+Shift+1 move workspace $ws1
+bindsym $mod+Shift+2 move workspace $ws2
+bindsym $mod+Shift+3 move workspace $ws3
+bindsym $mod+Shift+4 move workspace $ws4
+bindsym $mod+Shift+5 move workspace $ws5
+bindsym $mod+Shift+6 move workspace $ws6
+bindsym $mod+Shift+7 move workspace $ws7
+bindsym $mod+Shift+8 move workspace $ws8
+bindsym $mod+Shift+9 move workspace $ws9
 
 # reload the configuration file
-bindsym Mod4+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-#bindsym Mod4+Shift+r restart
+#bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-#bindsym Mod4+Shift+e exit
+#bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -174,7 +183,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym Mod4+r mode "resize"
+bindsym $mod+r mode "resize"
 
 # exit mode
 mode "(E)xit, (R)eboot, (P)oweroff" {
@@ -185,7 +194,7 @@ mode "(E)xit, (R)eboot, (P)oweroff" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym Mod4+Shift+e mode "(E)xit, (R)eboot, (P)oweroff"
+bindsym $mod+Shift+e mode "(E)xit, (R)eboot, (P)oweroff"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -261,6 +270,7 @@ assign [class="libreoffice-startcenter"] $ws8
 assign [class="Vivaldi-snapshot"] $ws6
 assign [class="Keepassx"] $ws2
 assign [class="Telegram"] $ws2
+assign [class="com-alee-extended-ninepatch-NinePatchEditorDialog"] $ws6
 
 
 for_window [class="libreoffice"] move container to workspace $ws8
@@ -273,6 +283,7 @@ for_window [class="Skype" title="Поиск текста"] move container to wor
 for_window [class="Skype" title="Информация"] move container to workspace $ws2
 for_window [class="Skype" title="Передачи файлов"] move container to workspace $ws2
 for_window [class="Skype" title="Информация"] floating enable
+for_window [class="com-alee-extended-ninepatch-NinePatchEditorDialog"] move container to workspace $ws6
 
 # Color-styles
     # Active style - colored back and dark font
@@ -298,7 +309,7 @@ for_window [class="Skype" title="Информация"] floating enable
     # Inactive light style - dark back and gray font
     set $ligb #282828
     set $ligbd #282828
-    set $ligf $ffffff
+    set $ligf #ffffff
 
 client.focused          $actb     $actb     $actf
 client.unfocused        $inab     $inab     $inaf
@@ -306,7 +317,7 @@ client.focused_inactive $inab     $inab     $inaf
 client.urgent           $invb     $invb     $invf
 
 # start dmenu (a program launcher)
-bindsym Mod4+d exec dmenu_run -nb '#2D2D2D' -nf '#6389A8' -sb '#186266' -sf '#2D2D2D' -fn "Droid Sans Mono-8:normal"
+bindsym $mod+d exec dmenu_run -nb '#2D2D2D' -nf '#6389A8' -sb '#186266' -sf '#2D2D2D' -fn "Droid Sans Mono-8:normal"
 
 
 #bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -c 0 set PCM 3%- unmute"
@@ -314,19 +325,28 @@ bindsym Mod4+d exec dmenu_run -nb '#2D2D2D' -nf '#6389A8' -sb '#186266' -sf '#2D
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
 #bindsym Mod1+Control+q exec --no-startup-id "amixer -c 0 set PCM 3%+ unmute"
 
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo -3%"
-bindsym Mod1+Control+a exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo -3%"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo +3%"
-bindsym Mod1+Control+q exec --no-startup-id "pactl set-sink-volume alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo +3%"
+
+set $audio_device alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo
+
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $audio_device -3%"
+bindsym Mod1+Control+a exec --no-startup-id "pactl set-sink-volume $audio_device -3%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $audio_device +3%"
+bindsym Mod1+Control+q exec --no-startup-id "pactl set-sink-volume $audio_device +3%"
 
 bindsym Mod1+Control+l exec --no-startup-id $HOME/.i3lock.sh
 
-bindsym Mod1+Control+z exec --no-startup-id deadbeef --prev
-bindsym Mod1+Control+x exec --no-startup-id deadbeef --stop
-bindsym Mod1+Control+c exec --no-startup-id deadbeef --play-pause
-bindsym Mod1+Control+v exec --no-startup-id deadbeef --next
 
-bindsym XF86AudioPrev exec --no-startup-id deadbeef --prev
-bindsym XF86AudioStop exec --no-startup-id deadbeef --stop
-bindsym XF86AudioPlay exec --no-startup-id deadbeef --play-pause
-bindsym XF86AudioNext exec --no-startup-id deadbeef --next
+set $music_prev exec --no-startup-id deadbeef --prev
+set $music_stop exec --no-startup-id deadbeef --stop
+set $music_play exec --no-startup-id deadbeef --play-pause
+set $music_next exec --no-startup-id deadbeef --next
+
+bindsym Mod1+Control+z $music_prev
+bindsym Mod1+Control+x $music_stop
+bindsym Mod1+Control+c $music_play
+bindsym Mod1+Control+v $music_next
+
+bindsym XF86AudioPrev $music_prev
+bindsym XF86AudioStop $music_stop
+bindsym XF86AudioPlay $music_play
+bindsym XF86AudioNext $music_next
