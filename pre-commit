@@ -72,7 +72,7 @@ do
 done 
 
 echo_error PX_FILES[@] "PX"
-echo_error PS_FILES[@] "PS"
+echo_error SP_FILES[@] "SP"
 echo_error TAB_FILES[@] "TAB"
 echo_error LR_FILES[@] "margin(padding, align, gravity) LEFT and RIGHT"
 echo_error COLOR_FILES[@] "hardcoded COLORS"
