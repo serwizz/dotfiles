@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-FILES=$(find -maxdepth 8 -type d -name 'hooks' | grep 'yapps')
+FILES=$(find -maxdepth 8 -type d -name 'hooks' | grep -E 'yapps_|fmapp2')
 URL='https://raw.githubusercontent.com/serwizz/dotfiles/master/pre-commit'
 
 TMPFILE=$(mktemp)
