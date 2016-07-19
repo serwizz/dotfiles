@@ -1,35 +1,66 @@
 #!/bin/bash
-echo starting process at `date`
-adb kill-server
-adb devices
-adb wait-for-device
-adb reboot bootloader
 
-echo start flash aboot at `date`
-fastboot flash aboot emmc_appsboot.mbn
-echo end flash aboot at `date`
+function date_formatted {
+	date +%H:%M:%S
+}
 
-echo start flash boot at `date`
-fastboot flash boot boot.img
-echo end boot at `date`
+USERDATA=0;
+RADIO=0;
 
-echo start flash system at `date`
-fastboot flash system system.img
-echo end flash system at `date`
+while [[ "$#" > 0 ]]; do case $1 in
+    -u) USERDATA=1;;
+    -r) RADIO=1;;
+    
+    *);;
+  esac; shift
+done
 
-echo start flash recovery at `date`
-fastboot flash recovery recovery.img
-echo end flash recovery at `date`
 
-echo start flash cache at `date`
-fastboot flash cache cache.img
-echo end flash cache at `date`
+echo -e "starting process at `date_formatted`"
+# adb kill-server
+# adb devices
+# adb wait-for-device
+# adb reboot bootloader
+
+echo -e "\nstart flash aboot at `date_formatted`"
+# fastboot flash aboot emmc_appsboot.mbn
+echo -e "end flash aboot at `date_formatted` \n"
+
+echo -e "start flash boot at `date_formatted`"
+# fastboot flash boot boot.img
+echo -e "end boot at `date_formatted` \n"
+
+echo -e "start flash system at `date_formatted`"
+# fastboot flash system system.img
+echo -e "end flash system at `date_formatted` \n"
+
+if [ $USERDATA -eq 1 ]
+	then
+		echo -e "start flash userdata at `date_formatted`"
+		# fastboot flash userdata userdata.img
+		echo -e "end flash userdata at `date_formatted` \n"
+fi
+
+echo -e "start flash recovery at `date_formatted`"
+# fastboot flash recovery recovery.img
+echo -e "end flash recovery at `date_formatted` \n"
+
+echo -e "start flash cache at `date_formatted`"
+# fastboot flash cache cache.img
+echo -e "end flash cache at `date_formatted`\n"
  
  
-#fastboot flash modem  radio\NON-HLOS.bin
-#fastboot flash sbl1          radio\sbl1.mbn
-#fastboot flash rpm          radio\rpm.mbn
-#fastboot flash tz               radio\tz.mbn
- 
-fastboot reboot      
-echo end process at `date`
+if [ $RADIO -eq 1 ]
+	then
+		echo -e "start flash radio at `date_formatted`"
+		# fastboot flash modem radio\NON-HLOS.bin
+		# fastboot flash sbl1 radio\sbl1.mbn
+		# fastboot flash rpm radio\rpm.mbn
+		# fastboot flash tz radio\tz.mbn
+		echo -e "end flash radio at `date_formatted` \n"
+fi
+
+# fastboot reboot      
+echo -e "end process at `date_formatted` \n"
+
+
