@@ -30,12 +30,12 @@ xftfont hermit:size=9
 TEXT
 
 [
-    { "full_text" : "DLS","color":"\#DEDEDE","separator":false,"separator_block_width":6},
-    { "full_text" : "${upspeed eno1}","color":"\#6389A8","separator":false,"separator_block_width":6},
     { "full_text" : "ULS","color":"\#DEDEDE","separator":false,"separator_block_width":6},
+    { "full_text" : "${upspeed eno1}","color":"\#6389A8","separator":false,"separator_block_width":6},
+    { "full_text" : "DLS","color":"\#DEDEDE","separator":false,"separator_block_width":6},
     { "full_text" : "${downspeed eno1}","color":"\#6389A8","separator":false,"separator_block_width":6},
     { "full_text" : "MUSIC","color":"\#DEDEDE","separator":false,"separator_block_width":6},
-    { "full_text" : "${exec deadbeef --nowplaying "%a - %t" 2>/dev/null}","color":"\#6389A8","separator":false,"separator_block_width":6},
+    { "full_text" : "${exec deadbeef --nowplaying-tf "%artist% - %title%" 2>/dev/null}","color" : ${if_empty ${exec deadbeef --nowplaying-tf "%ispaused%" 2>/dev/null}} "\#6389A8" ${else} "\#777777" ${endif} ,"separator":false,"separator_block_width":6},
     { "full_text" : "RAM","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
     { "full_text" : "${mem}","color":"\#6389A8","separator":false,"separator_block_width":6},\
     { "full_text" : "CPU","color":"\#DEDEDE","separator":false,"separator_block_width":6},\
